@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+    </head>
+    <body>
+        <div >
+            
+        </div>
+        <!-- inclusion de la librairie Lodash via CDN-->
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+
+        <script>
+            /*********************************************************************
+            Lodash est une bibliothèque qui fournit un ensemble de méthodes 
+            et fonctionnalités facilitant l'utilisation de Javascript
+
+            Ces fonctionnilités et méthodes sont disponibles via la variable globale _
+            ce qui permet de ne pas polluer l'espace de nom global
+
+            Voir la documentation : https://lodash.com/docs/4.17.11
+            ************************************************************************/
+
+            //Exemples de méthodes sur les chaines de caractères
+                //trim pour enlever des caractères en début et en fin de chaine
+            var demo = "   djfjk  "
+            var demo2 = "000004";
+            console.log(_.trim(demo))
+            console.log(_.trim(demo2, 0))
+
+            //Exemples de méthodes sur les tableaux
+            var tab1 = [1,2,3]
+            var tab2 = [4,5]
+
+                // concat pour la fusion de tableaux
+            console.log(_.concat(tab1, tab2))
+
+            var users = [
+                { 'user': 'fred', 'age': 40, 'active': false },
+                { 'user': 'barney', 'age': 36, 'active': true},
+                { 'user': 'pebbles', 'age': 12, 'active': true}
+            ]
+                //without, filter, find pour filtrer un tableau
+
+                //orderBy pour trier un tableau
+
+                //map pour effectuer des opérations sur les éléments d'un tableau => retourne un nouveau tableau
+            var tabMap = _.map(users, function(user) {
+                user.age = user.age * 2
+                return user.age
+            })
+            console.log(tabMap);
+
+                //forEach pour parcourir un tableau 
+            _.forEach(users[0], function(value, key) {
+                console.log( key + ": " + value)
+            })
+
+            //throttle et debounce pour la gestion des événements
+        </script>
+    </body>
+</html>

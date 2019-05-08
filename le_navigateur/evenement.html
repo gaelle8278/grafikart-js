@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            .red {
+                color: #e72b2b;
+            }
+            .blue {
+                color: #4d2be7;
+            }
+            p {
+                transition: color 1s;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <a href="http://grafikart.fr" class="external">Cliquez ici</a>
+        <p id="propagation">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur reprehenderit totam voluptate laboriosam voluptas eaque distinctio alias? Delectus, provident eligendi, obcaecati, beatae quae nisi amet eius sed fugiat quam accusamus! <br>
+            <a href="http://grafikart.fr" class="external">Cliquez ici</a>
+        </p>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora voluptatum debitis laudantium doloremque optio dolorem culpa ipsa quas iusto molestiae porro libero velit similique, officia, facilis quibusdam, necessitatibus earum? Ex.</p>
+       
+        <div id="remove">Suppression d'événement</div>
+
+        <!-- les champs de formualaires -->
+        <form action="#" id="form">
+            <input type="text" id="a" />
+            <input type="text" id="b" value="Salut" />
+            <input type="text" id="cp" />
+            <select name="age" id="age">
+                <option value ="12">12</option>
+                <option value ="20">20</option>
+            </select>
+            <input type ="checkbox" id="mentions">J'accepte les CGU
+            <input type="submit" value="Envoyer">
+        </form>
+        
+        <!-- chargement du js en fin de script :
+            pour interagir avec la page une fois qu'elle est chargée et ne pas utiliser des éléments qui n'existent pas encore
+            pour que le temps de chargement du js ne bloque pas l'exécution de la page -->
+        <script type="text/javascript" src="evenement.js"></script>
+    </body>
+</html>

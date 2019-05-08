@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script>
+            /* ---------------------
+            Le prototype
+            ------------------------ */
+            // les types de données primaires (entier, chaine de caractères, booléen, flottant, tableaux) sont tous associés à un prototype 
+            //(Javascript fait de l'objet par prototype et en Javascript tout est objet)
+            // le prototypage permet de créer ces propres types de données 
+
+            /** La propriété prototype : 
+             * ne doit pas être utilisée, utilisée dans le fonctionnement interne de Javascript **/
+            /********************************************************************************/
+            // La propriété prototype permet d'assigner un type d'objet à un objet
+            // l'objet pourra ensuite utiliser les propriétés de l'objet prototype
+            console.log("++ exemple 1 ++");
+            //1. création d'un objet "générique", un prototype
+            var eleve = {
+                moyenne: function() {
+                    var somme = 0;
+                    for (i=0; i < this.notes.length; i++) {
+                        somme += this.notes[i];
+                    }
+                    return somme / this.notes.length;
+                },
+                present: function () {
+                    console.log(this.nom + " présent");
+                }
+            }
+
+            //2. création d'objets standards avec les propriétés nécessaires
+            var jean = {
+                nom: 'Jean',
+                notes: [10, 12 , 12]
+            }
+            var marc = new Object()
+            marc.nom = 'Marc',
+            marc.notes = [10, 14, 18]
+            
+
+            //3. assignation du type de données aux objets créés
+            jean.__proto__= eleve;
+            marc.__proto__ = eleve;
+
+            //4. Appels des méthodes du prototype
+            console.log(jean.moyenne());
+            console.log(marc.moyenne());
+
+            /** La méthode create de l'objet racine : pas pratique
+            *******************************************************/
+            console.log("++ exemple 2 ++");
+            //1. création d'un objet "générique", un prototype
+            var eleve2 = {
+                moyenne: function() {
+                    var somme = 0;
+                    for (i=0; i < this.notes.length; i++) {
+                        somme += this.notes[i];
+                    }
+                    return somme / this.notes.length;
+                },
+                present: function () {
+                    console.log(this.nom + " présent");
+                }
+            }
+
+            //2. creation de l'objet avec le prototype voulu
+            var marion = Object.create(eleve2);
+
+            //3. ajout des propriétés nécessaires 
+            marion.notes = [5,8];
+            marion.nom = "Marion";
+
+            //4. appel des méthodes du prototype
+            console.log(marion.moyenne());
+            marion.present();
+
+            /** Le constructeur d'objet
+            *************************************/
+            console.log("++ exemple 3 ++");
+
+            //création d'une fonction constructeur
+            var Eleve = function (nom, notes) {
+                this.nom = nom;
+                //if(notes != undefined) {
+                    this.notes = notes;
+                //}
+            }
+            // ajout de la définition de méthodes au constructeur d'objet défini précédemment
+            // via la propriété prototype
+            Eleve.prototype.moyenne = function () {
+                if (this.notes === undefined) {
+                    return NaN;
+                }
+                var somme = 0;
+                for (i=0; i < this.notes.length; i++) {
+                    somme += this.notes[i];
+                }
+                return somme / this.notes.length;
+            }
+
+            // création d'objet (instances) du type de données personnalisé
+            // la fonction constructeur est une fonction classique, son utilisation avec le mot-clé new induit un comportement particulier
+            var paul = new Eleve('Paul', [10,20,15]);
+            var julien = new Eleve('Julien');
+
+            //utilisation des méthode du type de données
+            console.log(paul.moyenne());
+            console.log(julien.moyenne());
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script>
+            /* WHILE
+            ---------------------- */
+            console.log("++ Exemple 1 ++");
+            var i = 0;
+            while(i < 11) {
+                console.log(i);
+                //penser à la condition de sortie de la boucle
+                i++;
+            }
+            //forcer la sortie de la boucle avec break
+            console.log("++ Exemple 2 ++");
+            var j = 0;
+            while(j < 11) {
+                console.log(j);
+                if (j==3) {
+                    break;
+                }
+                //penser à la condition de sortie de la boucle
+                j++;
+            }
+
+            /* DO WHILE
+            ---------------------- */
+
+            /* FOR
+            ---------------------- */
+            console.log("++ Exemple 3 ++");
+            for(var j=0; j <= 10; j++) {
+                console.log(j);
+            }
+
+            console.log("++ Exemple 4 ++");
+            var eleves = ['Luc', 'Matt', 'Sarah'];
+            for(var i=0; i < eleves.length; i++) {
+                console.log('Bonjour ' + eleves[i]);
+            }
+
+            console.log("++ Exemple 5 ++");
+            for(var i = eleves.length - 1; i >=0; i--) {
+                console.log('Bonjour ' + eleves[i]);
+            }
+
+            /* Exemple algorithme nombre premier
+            ---------------------------------------*/
+            /* 
+            un nombre EST PREMIER SI il est divisible par 1 et par lui-même
+            donc un nombre N'EST PAS PREMIER s'il est divisible par un nombre compris entre 2 et lui-même -1
+            */
+            console.log("++ Exemple 6 ++");
+            var nombre = 91;
+            var estPremier = true;
+            for (var i=2; i < nombre; i++) {
+                if(nombre % i === 0 ) {
+                    estPremier = false;
+                    console.log("Ce nombre n'est pas premier");
+                    console.log(nombre + ' est divisible par ' + i);
+                    break;
+                }
+            }
+
+            if(estPremier) {
+                console.log(nombre + ' est premier ');
+            }
+
+            console.log("++ Exemple 7 ++");
+            var eleves = [{
+                nom: 'Mattéo',
+                moyenne: 15
+            }, {
+                nom: 'Benjamin',
+                moyenne: 8
+            }, {
+                nom: 'Julia',
+                moyenne: 16
+            }];
+
+            for(var j=0; j < eleves.length; j++) {
+                var eleve = eleves[j];
+                if(eleve.moyenne >= 10) {
+                    console.log(eleve.nom + ' a la moyenne');
+                } else {
+                    console.log(eleve.nom + ' doit progresser');
+                }
+            }
+            
+
+            
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

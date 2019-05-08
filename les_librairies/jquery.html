@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            body {
+                background-color: #EEE;
+                font-family: sans-serif;
+                padding: 50px;
+            }
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+            ul.tabs, .tabs li {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+            .tabs li {
+                float: left;
+                display: block;
+            }
+            .tabs:after {
+                display: table;
+                content: ' ';
+                clear: both;
+            }
+            .tabs a {
+                display: inline-block;
+                background-color: #EEE;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                padding: 10px 15px;
+
+            }
+            .tabs .active a {
+                background-color: #fff;
+            }
+
+            .tabs-content {
+                position: relative;
+                z-index: 3;
+                padding: 20px;
+                background-color: #fff;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+                margin-bottom: 20px;
+
+            }
+        </style>
+        
+    </head>
+    <body>
+        <div>
+            <ul class="tabs">
+                <li class="active"><a href="#home">Accueil</a></li>
+                <li><a href="#mentions">Mentions</a></li>
+                <li><a href="#about">A propos</a></li>
+            </ul>
+            <div class="tabs-content">
+                <div class="tab-content active" id="home">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum ut enim quis ratione aut perspiciatis debitis provident quod ipsa velit maiores reiciendis tempora molestiae rerum fugiat, fuga libero exercitationem autem?</div>
+                <div class="tab-content" id="mentions">Aut deserunt, error ullam odit placeat quis libero similique non et voluptas tempora fuga a voluptate veritatis, facilis qui blanditiis fugit vitae.</div>
+                <div class="tab-content" id="about">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, voluptatibus? </div>
+            </div>
+                   
+            
+        </div>
+        
+        <!-- inclusion de JQuery via CDN-->
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+        <script>
+            /*********************************************************************
+            jQuery est une bibliothèque qui :
+            - facilite la compatibilité navigateur notamment des plus anciens qui n'ont pas toutes les fonctionnalités du JS récent
+            - permet d'écrire du code javascript plus simple, plus concis que du vanilla
+            - fournit de nouvelles méthodes et fonctions par rapport au vanilla
+            
+            Ces fonctionnalités sont disponibles via la variable globale jQuery ou $ ($ est un alias)
+            ce qui permet de ne pas polluer l'espace de nom global
+
+            Voir la documentation : https://api.jquery.com/
+            Documentation sur les sélecteurs : https://api.jquery.com/category/selectors/
+            ************************************************************************/
+            //parcours du DOM : siblings ...
+
+            //modifications du DOM : append, before, prepend ...
+            
+            //gestion des événements
+            //NB : l'événement click s'appliquera sur tous les éléments sélectionnés grâce au sélecteur
+            //pas besoin de récupérer les éléments dans un tableau puis de les parcourir comme en Vanilla
+            $('.tabs a').on('click', function (e) {
+                console.log(this)
+            })
+
+            //onglets
+        </script>
+    </body>
+</html>

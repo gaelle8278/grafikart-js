@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script>
+            var marc = {
+                nom: "Marc",
+                age: 18,
+                moyenne: 15
+            };
+            
+            /* IF ELSE
+            ----------------------- */
+            //if else simple
+            console.log("++ Exemple 1 ++");
+            if(marc.age >= 18 ) {
+                console.log('Tu peux passer ton permis');
+            } else if (marc.age > 15) {
+                console.log('Tu peux passer la conduite accompagnée');
+            } else {
+                console.log('Tu ne peux pas encore conduire');
+            }
+            //if else avec opérateur logique
+            console.log("++ Exemple 2 ++");
+            marc.age = 22;
+            if(marc.age >=18 && marc.age <= 25) {
+                console.log('Bravo ! Tu as droit au traif jeune.');
+            } else {
+                console.log('Vous n\'avez pas accès au tarif jeune');
+            }
+                //le && est priotaire sur le || => possibilité de grouper avec des parenthèses ()
+            console.log("++ Exemple 3 ++");
+            marc.age = 72;
+            if(marc.age >=18 && marc.age <= 25 || marc.age > 70) {
+                console.log('Bravo ! Tu as droit à une réduction.');
+            } else {
+                console.log("Vous n'avez pas accès au tarif jeune");
+            }
+
+            //comparaison en valeur et en type
+            console.log("++ Exemple 4 ++"); 
+            marc.age="18";
+            if(marc.age === 18) {
+                console.log("Tu as 18 ans");
+            } else {
+                console.log ("Ton âge n'est pas un nombre");
+            }
+
+            /* SWITCH CASE 
+            ------------------------- */
+            //ne permet que de tester des égalités
+            console.log("++ Exemple 5 ++");
+            marc.age = 18;
+            switch (marc.age) {
+                case 18: 
+                    console.log('Tu es tout juste majeur');
+                    break;
+                case 25:
+                    console.log('Bravo tu as un quart de siècle');
+                    break;
+                case 50: 
+                    console.log('Bravo tu as un demi siècle');
+                    break;
+                default: 
+                    console.log("Bon anniversaire !");
+            }
+            //enchainement de cases en supprimant les break
+            console.log("++ Exemple 6 ++");
+            marc.age = 25;
+            switch (marc.age) {
+                case 18: 
+                    console.log('Tu es majeur');
+                case 25:
+                    console.log('Bravo tu dépasses le quart de siècle');
+                case 50: 
+                    console.log('Bravo tu as un demi siècle');
+                default: 
+                    console.log("Bon anniversaire !");
+            }
+
+            /* OPERATEUR TERNAIRE
+            --------------------------- */
+            console.log("++ Exemple 7 ++");
+            marc.age = 12;
+            console.log(marc.age >= 18 ? 'Tu es majeur' : 'Tu es mineur');
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

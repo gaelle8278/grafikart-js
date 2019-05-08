@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            .spoiler-content, .spoiler2-content {
+                display: inline-block;
+                width: 0;
+                height: 0;
+                opacity: 0;
+                overflow: hidden;
+                transition: opacity 0.5s;
+            }
+
+            .spoiler-content.visible, .spoiler2-content.visible {
+                display: inline;
+                width: auto;
+                height: auto;
+                opacity: 1;
+            }
+        </style>
+    </head>
+    <body>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores ipsam officiis beatae? Error ratione blanditiis iusto omnis corrupti eaque soluta alias ipsa ad delectus quidem nam molestiae modi, adipisci quaerat!
+        </p>
+        <!-- exemple 1 -->
+        <p class="spoiler">
+            <button> Afficher le spoiler</button>
+            <span class="spoiler-content">John meurt encore à la fin !</span>
+        </p>
+
+        <!-- exemple 2 -->
+        <p class="spoiler2">
+            John meurt à la fin !
+        </p>
+        <p>
+            <span>Lorem ipsum dolor sit <span class="spoiler2">amet consectetur adipisicing elit</span>. Fugiat quod fugit maiores, consequuntur at officia harum excepturi saepe ut aperiam explicabo architecto perferendis a autem rem beatae odio necessitatibus porro.</span>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat quod fugit maiores, consequuntur at officia harum excepturi saepe ut aperiam explicabo architecto perferendis a autem rem beatae odio necessitatibus porro.</span>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat quod fugit maiores, consequuntur at officia harum excepturi saepe ut aperiam explicabo architecto perferendis a autem rem beatae odio necessitatibus porro.</span>
+        </p>
+
+        <!-- chargement du javascript -->
+        <script type="text/javascript" src="spoiler.js"></script>
+    </body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script>
+            console.log("++ Exemple 1 ++");
+            //définition d'une fonction simple
+            function estPremier(nombre) {
+                for (var i=2; i < nombre; i++) {
+                    if(nombre % i === 0 ) {
+                        estPremier = false;
+                        return false;
+                    }
+                }
+                return true;
+            }
+            console.log(estPremier(31));
+
+            console.log("++ Exemple 2 ++");
+            /*
+            En Javascript il n'est pas possible de mettre des valeurs par défaut aux paramètres
+            function multiplie (a, b=0) n'est pas possible
+            Javascript ne vérifie pas les paramètres,  il met undefined aux paramètres non définis (= il n'y pas de notion de paramètres obligatoire)
+            Il faut donc les vérifier à l'intérieur de la fonction
+            */
+            function multiplie(a, b) {
+                if(b === undefined) {
+                    b = 1;
+                }
+                return a * b;
+            }
+            console.log(8);
+
+            console.log("++ Exemple 3 ++");
+            function afficheQuiALaMoyenne(eleves) {
+                for (var i=0; i < eleves.length; i++) {
+                    var eleve = eleves[i];  
+                    if(eleve.moyenne >= 10 ) {
+                        console.log(eleve.nom + ' a la moyenne');
+                    }              
+                }
+            }
+
+            var classe = [{
+                nom: 'Mattéo',
+                moyenne: 15
+            }, {
+                nom: 'Benjamin',
+                moyenne: 8
+            }, {
+                nom: 'Julia',
+                moyenne: 16
+            }];
+
+            afficheQuiALaMoyenne(classe);
+
+            console.log("++ Exemple 4 ++");
+            //fonction anonyme
+            var estPremier = function (nombre) {
+                for (var i=2; i < nombre; i++) {
+                    if(nombre % i === 0 ) {
+                        estPremier = false;
+                        return false;
+                    }
+                }
+                return true;
+            }
+            console.log(estPremier(91));
+
+            console.log("++ Exemple 5++");
+            //objet
+            var pikatchu = {
+                crier: function() {
+                    console.log('PIKATCHU')
+                }
+            }
+            pikatchu.crier();
+
+            // il existe quelques fonctions globales (comme parseInt) mais la plupart sont liées à des objets
+            // objet natif important => Math 
+            // les méthodes peuvent être liées à l'objet (Number.methodeA()) ou aux instances de l'objet (var int = 2; int.methodeI()) => Objet.proprotype.methodeI() dans la donc MDN
+
+            console.log("++ Exemple 6 ++");
+            var classe2 = [{
+                nom: 'Julien',
+                moyenne: 15
+            }, {
+                nom: 'Benoit',
+                moyenne: 8
+            }, {
+                nom: 'Stéphanie',
+                moyenne: 16
+            }];
+            var aLaMoyenne = function (eleves) {
+                var moyennes = [];
+                for (var i=0; i < eleves.length; i++) {
+                    var eleve = eleves[i];
+                    if ( eleve.moyenne >= 10 ) {
+                        moyennes.push(eleve.nom);
+                    }
+                }
+
+                return moyennes;
+            }
+            console.log(aLaMoyenne(classe2));
+
+            console.log("++ Exemple 7 ++");
+            var frequence = function(phrase) {
+                var mots = phrase.toLowerCase().split(" ");
+                var compteur = {};
+                for (var i=0; i < mots.length; i++) {
+                    var mot = mots[i];                    
+                    if(compteur[mot] === undefined) {
+                        compteur[mot] = 1;
+                    } else {
+                        compteur[mot]++
+                    }
+                }
+
+                return compteur;
+            }
+            console.log(frequence("Ma super phrase !"));
+
+            console.log("++ Exemple 8 ++");
+            var eleve1 = {
+                nom: "Pierre",
+                notes: [8,12,14]
+            };
+
+            var eleve2 = {
+                nom: "Stéphane",
+                notes: [12,15,18]
+            }
+
+            var moyenne = function(notes) {
+                var additionNotes = 0 ;
+                for (var i = 0; i < notes.length; i++) {
+                    additionNotes += notes[i];
+                }
+
+                return additionNotes / notes.length;
+                
+            };
+
+            var estMeilleur = function(e1, e2) {
+                var meilleur= "";
+                if(moyenne(e1.notes) > moyenne(e2.notes)) {
+                    meilleur = e1.nom;
+                } else {
+                    meilleur = e2.nom;
+                }
+
+                return meilleur;
+            };
+
+            //console.log(moyenne(eleve1.notes));
+            console.log(estMeilleur(eleve1, eleve2));
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

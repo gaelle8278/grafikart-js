@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="ISO-8859-1">
+        <title>Insert title here</title>
+        <script>
+        console.log("+++++++++++++ Les types de variable ++++++++++++")
+        //le nom des variables ne peut pas commencer par un chiffre ou un caractère spécial
+        //le nom doit commencer par un lettre puis il peut contenir des lettres/des chiffres/le caractère underscore et dollar
+        var string = "Ceci est une chaine"
+        console.log("Une chaine :")
+        console.log(string)
+        var number = 32
+        console.log("Un entier :")
+        console.log(number)
+        var float = 1.23
+        console.log("Un flottant :")
+        console.log(float)
+        var bool = true
+        console.log("Un booleen :")
+        console.log(bool)
+
+        //JS est un langage de typage faible, cela signifie que le type d'une variable peut changer au cours de l'exécution
+        // cela induit également des conversions de type automatiques lors d'opérations
+        console.log("+++++++++++++ Les conversions ++++++++++++")
+        console.log("\"3\" + 4 =>" )
+        console.log ("3" + 4) //affiche la chaine "34" => concaténation de la chaine 3 avec l'entier 4 convertit en chaine
+        console.log("\"3\" * 4 =>" )
+        console.log("3" * 4) //affiche de l'entier 12 => la mutiplication de chaine n'est pas possible donc la chaine 3 est convertit en entier 3
+        console.log("\"Salut les gens\" * 4 =>" )
+        console.log("Salut les gens" * 4) //affiche NaN => une chaine ne peut etre multiplier et sa conversion en nombre n'est pas possible
+        console.log("7 > 42 =>" )
+        console.log(7 > 42) //affiche false => comparaison de nombres
+        console.log("\"7\" > \"42\" =>" )
+        console.log("7" > "42") //affiche true => comparaison de chaine de caractères = comparaison par ordre alphabétique
+
+
+        console.log("+++++++++++++ Les structures ++++++++++++")
+        console.log("Un tableau =>")
+        var eleves = ["Stéphanie", "Julien", "Sylvain"]
+        console.log(eleves)
+        //récupéerer un élément
+        console.log(eleves[0])
+
+        console.log("Un objet (~ tableau asscoiatif en php) =>")
+        var eleve = {
+            nom: "Sylvain",
+            age: 32,
+            moyenne: 12
+        }
+        console.log(eleve)
+        //afficher un élément :
+        console.log(eleve.nom)
+        //la syntaxe tableau est utilisable pour récupérer un element
+        console.log(eleve['age'])
+        //possibilité d'ajouter dynamiquement une valeur
+        eleve.taille= 170
+        console.log(eleve)
+
+        //Dans Javascript TOUT EST OBJET
+        //donc les variables ont des propriétés et méthodes, par exemple la propriété length pour une chaine de caractères
+        console.log(eleve.nom.length)
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

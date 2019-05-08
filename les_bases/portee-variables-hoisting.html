@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script>
+            /* ---------------------
+            Portée des variables
+            ------------------------ */
+            console.log("++ Exemple 1 ++");
+            //les variables gobales sont accesibles partout même à l'intérieur d'une fonction
+            var b = "Variable globale";
+            var demo = function () {
+                //les variables des fonctions sont accessibles uniquement dans les fonctions
+                var a = "Salut";
+                //une fonction utilisant les variables globales (= variables en dehors de son contexte) est appelée closure
+                console.log(b); 
+            }
+            demo(); //affiche "Variable globale"
+            //console.log(a); // affiche une erreur car la variable a n'est pas définie
+
+            console.log("++ Exemple 2 ++");
+            //les variables définies dans une structure sont accessibles en dehors de la structure
+            // le mot clef "let" permettant de limiter la portée à la strcuture apparait à la version ES6 de Javascript
+            
+            for (var i =0; i < 10; i++) {
+
+            }
+            console.log(i); // affiche "10"
+
+            /* ---------------------
+            L'hoisting 
+            ------------------------- */
+            /** Les variables **/
+            /**********************/
+            console.log("++ Exemple 3 ++");
+            //Javascript place la déclaration des variables au début du script
+            console.log(c);
+            var c = 3; // affiche "undefined"
+            //car équivaut à l'éxecution, à cette suite d'instructions
+            /*var c;
+            console.log(c);
+            c = 3;*/
+
+            console.log("++ Exemple 4 ++");
+            // l'hoisting explique que la déclaration d'une variable à l'intérieur d'une boucle fonctionne
+            // Javascript ne comprend pas ça comme une déclaration de variable à chaque itération (donc une variable différente à chaque tour)
+            // il fait la déclaration de la variable en début de script puis utilise la variable à l'intérieur de la boucle
+            for (var i = 0; i < 10; i++) {
+                var j=i;
+                console.log(j);
+            }
+            //équivaut à l'éxecution suivante
+            /*var j;
+            for (var i = 0; i < 10; i++) {
+                j=i;
+                console.log(j);
+            }*/
+
+            /** Les fonctions **/
+            /**********************/
+            console.log("++ Exemple 5 ++");
+            // Javascript place la déclaration des fonctions en début de script
+            // ce qui explique que l'appel d'une fonction fonctionne avant sa déclaration
+            demo2(); // affiche "Salut"
+            function demo2() {
+                console.log("Salut");
+            }
+            //équivaut à l'exécution à :
+            /*function demo2() {
+                console.log("Salut");
+            }
+            demo2(); */
+
+            console.log("++ Exemple 6 ++");
+            // cela crée une différence d'exécution avec les fonctions affectées à une variable
+            // dans ce cas c'est la déclaration de la variable qui est placée en haut du script et non la déclaration de la fonction
+            //demo3(); // affiche une erreur en disant que demo3 n'est pas une fonction
+            var demo3 = function () {
+                console.log("Hello");
+            }
+            // car équivaut à l'éxecution à :
+            /*var demo3;
+            demo3();
+            demo3 = function () {
+                console.log("Hello");
+            }*/
+
+            console.log("++ Exemple 7 ++");
+            //cela peut entrainer une logique d'exécution différente de la logique d'écriture surtout lorsqu'il y a des return
+            var demo4 = function() {
+                function f () {
+                    return 3;
+                }
+                return f();
+                function f () {
+                    return 4;
+                }
+            }
+            console.log(demo4()); //affiche "4" 
+            //car l'hoisting fait que les déclarations de la fonction f sont placées au début et que c'est la dernière déclaration qui est prise en compte
+            //alors que le return f() vu sa place laisse penser que ça va retourner "3"
+            //équivaut à l'exécution à :
+            /*var demo4 = function() {
+                function f () {
+                    return 3;
+                }
+                function f () {
+                    return 4;
+                }
+                return f();
+            }
+            demo4();*/
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

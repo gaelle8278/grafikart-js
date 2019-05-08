@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ECMAScript 2015 - ES6</title>
+        <script>
+            ////////////////////////////////
+            // Nouveaux éléments de syntaxe
+            /////////////////////////////////
+
+            //++ le mot-clé let => permet de limiter la portée des variables à une structure (une boucle, une condition) 
+            ////////////////////////////////
+            console.log("+++++++++++ mot-clé let +++++++++")
+            if([1,2,3].length == 3) {
+                let test="Salut"
+                console.log(test)
+            }
+            //console.log(test) //erreur test non définie
+
+            //++ les constantes
+            ///////////////////////
+            const PI = 3.14
+
+            //++ les fonctions fléchées
+            ///////////////////////////////////
+            console.log("+++++++++++ fonctions fléchées dans forEach +++++++++")
+            var tab = ['Anaïs', 'Claire', 'Saïd']
+            /*
+            tab.forEach(function (v) {
+                console.log(v);
+            });
+            */
+            //équivaut avec une fonction fléchée à
+            tab.forEach(v => console.log(v))
+                //si plusieurs arguments il faut les entourer de parenthèses
+            tab.forEach((v,k) => console.log(v,k))
+                //si plusieurs instructions il faut mettre les accolades
+            tab.forEach((v,k) => {
+                k=k*2
+                console.log(v,k)
+            })
+
+            console.log("+++++++++++ fonctions fléchées dans objet +++++++++")
+            //les fonctions fléchées dans méthode d'un objet permettent de garder le contexte de l'objet parent dans le this
+            /* 
+            var classe = {
+                eleves: ['Julien', 'Antoine', 'Sébastien'],
+                nom: 'CM2',
+                afficheEleves: function () {
+                    var _this = this;
+
+                    this.eleves.forEach(function (v) {
+                        console.log(_this.nom);
+                    });
+                }
+            };
+
+            classe.afficheEleves()*/
+            //équivaut avec une fonction fléchée à
+            var classe = {
+                eleves: ['Julien', 'Antoine', 'Sébastien'],
+                nom: 'CM2',
+                afficheEleves: function () {
+                    this.eleves.forEach( v => {
+                        console.log(this.nom)
+                    })
+                }
+            }
+            classe.afficheEleves()
+
+            console.log("+++++++++++ fonctions fléchées pour return automatique +++++++++")
+            //les fonctions fléchées permettent d'etre moins verbeux lors de return : exemple avec la fonction map
+            classe.eleves.map(v => "Mr" + v)
+            // à la place de :
+            /*classe.eleves.map(function (v) {
+                return "Mr" + v;
+            });*/
+
+            console.log("+++++++++++ fonctions fléchées pour simplifier écriture méthode +++++++++")
+            /*
+            var classe = {
+                eleves: ['Julien', 'Antoine', 'Sébastien'],
+                nom: 'CM2',
+                afficheEleves: function () {
+                    this.eleves.forEach( v => {
+                        console.log(this.nom)
+                    })
+                }
+            }*/ 
+            var classe = {
+                eleves: ['Julien', 'Antoine', 'Sébastien'],
+                nom: 'CM2',
+                afficheEleves () {
+                    this.eleves.forEach( v => {
+                        console.log(this.nom)
+                    })
+                }
+            }
+            // => créé automatiquement une fonction ayant pour clé afficheEleves
+
+            //++ le back quote ` 
+            ///////////////////////////////
+            console.log("+++++++++++ le back quote +++++++++")
+            // permet d'écrire sur plusieurs lignes
+            console.log (` Cette ligne est écrite sur plusieurs lignes
+            facilement dans le code source `)
+
+            // permet l'interpolation des variables
+            var name = "variable interpolée"
+            console.log(`Interpolation des variables ${name} `)
+
+            ////////////////////////////////
+            // Ecriture de classe
+            /////////////////////////////////
+            console.log("+++++++++++ les classes +++++++++")
+            class Classe {
+                //dans les classes JS il n'est pas possible de définir directement des propriétés 
+                // les propriétés doivent etre déclarées dans le constructeur
+                constructor () {
+                    this.eleves = ['Julien', 'Antoine', 'Sébastien']
+                    this.nom = 'CM2'
+                }
+                
+                //définition des méthodes de façon classique
+                afficheEleves () {
+                    console.log('Les élèves de la classe ' + this.nom)
+                    this.eleves.forEach( v => {
+                        console.log(v)
+                    })
+                }
+
+            }
+
+            var c = new Classe()
+            c.afficheEleves()
+
+            console.log("+++++++++++ les classes : constructeur avec param par défaut +++++++++")
+            class ClasseDefParam {
+                //apparition des valeurs par défaut pour les paramètres des fonctions : ex ici avec un constructeur
+                constructor (name = 'CM2') {
+                    this.eleves = ['Julien', 'Antoine', 'Sébastien']
+                    this.nom = name
+                }
+                
+                afficheEleves () {
+                    console.log('Les élèves de la classe ' + this.nom)
+                    this.eleves.forEach( v => {
+                        console.log(v)
+                    })
+                }
+
+            }
+
+            var cdp = new ClasseDefParam()
+            cdp.afficheEleves()
+
+             console.log("+++++++++++ les classes : héritage +++++++++")
+             class Classe2 extends Classe {
+             }
+
+             var ch = new Classe2()
+             //Classe2 hérite de la méthode parente
+             ch.afficheEleves()
+
+             console.log("+++++++++++ les classes : surcharge fonction +++++++++")
+             class Classe3 extends Classe {
+                 afficheEleves () {
+                    this.eleves.forEach( v => {
+                        console.log(v + ' ' + this.nom)
+                    })
+                }
+             }
+             var chs = new Classe3()
+             //utilisation de la méthode définit dans Class3
+             chs.afficheEleves()
+
+             console.log("+++++++++++ les classes : surcharge constructeur +++++++++")
+             class Classe4 extends Classe {
+                 
+                constructor() {
+                    //appel du constructeur parent
+                    super()
+                    //modifications ...
+                    this.nom =` Classe 4 ${this.nom} `
+                }
+             }
+             var chsc = new Classe4()
+             chsc.afficheEleves()
+
+            ////////////////////////////////
+            // Le spread operator
+            /////////////////////////////////
+            console.log("+++++++++++ le spread operator pour les paramètres de fonctions +++++++++")
+            class ClasseSpreadOp {
+                constructor (name = 'CM2', ...eleves) {
+                    this.eleves = eleves
+                    this.nom = name
+                }
+                
+                afficheEleves () {
+                    console.log('Les élèves de la classe ' + this.nom)
+                    this.eleves.forEach( v => {
+                        console.log(v)
+                    })
+                }
+
+            }
+
+            var cso = new ClasseSpreadOp('CM1', 'Paul', 'Pascal', 'Marc')
+            cso.afficheEleves()
+
+            console.log("+++++++++++ le spread operator pour ajouter des valeurs +++++++++")
+            var tab1 = ['Merlin', 'Arthur']
+            var tab2 = ['Gueunièvre', 'Perceval', ...tab1]
+            console.log(tab2)
+
+            var cso2 = new ClasseSpreadOp('CM1', ...tab1)
+            cso2.afficheEleves()
+
+            ////////////////////////////////
+            // La notion de module
+            /////////////////////////////////
+            //dans un fichier définition de la classe et son exportation
+            /*export class MaClasse {
+                
+
+            }
+
+            export class MaClasse2 {
+                
+
+            }
+
+            //dans le fichier devant utiliser la classe
+            import {MaClasse, MaClasse2} from 'lib/class'*/
+
+            ////////////////////////////////
+            // Les promesses en natif (pas besoin de bibliothèque externe)
+            /////////////////////////////////
+
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
